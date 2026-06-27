@@ -1,3 +1,4 @@
+package shapes
 abstract class Shape {
 
     abstract fun getPoints(): List<Point>

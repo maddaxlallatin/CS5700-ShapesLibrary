@@ -1,3 +1,5 @@
+package shapes
+
 class Point(x: Double, y: Double) : Shape() {
 
     var x: Double = x
@@ -5,7 +7,7 @@ class Point(x: Double, y: Double) : Shape() {
     var y: Double = y
         private set
 
-    override fun getPoints(): List<Point> = listOf(this)
+    override fun getPoints(): List<Point> = listOf(this.clone())
 
     override fun move(dx: Double, dy: Double) {
         x += dx

@@ -1,27 +1,25 @@
-import kotlin.math.PI
-open class Ellipse(center: Point, heightRadius: Double, widthRadius: Double): Shape() {
+package shapes
 
-    var center: Point = center
-        private set
-    var heightRadius: Double = heightRadius
-        private set
-    var widthRadius: Double = widthRadius
-        private set
+import kotlin.math.PI
+open class Ellipse(center: Point, private val heightRadius: Double, private val widthRadius: Double): Shape(), AreaShape {
+
+    private val center = center.clone()
 
     init {
         require(heightRadius > 0.0) { "heightRadius must be positive" }
         require(widthRadius > 0.0) { "widthRadius must be positive" }
     }
 
-    override fun getPoints(): List<Point> = listOf(center)
+    override fun getPoints(): List<Point> = listOf(center.clone())
 
     override fun move(dx: Double, dy: Double) {
         center.move(dx, dy)
     }
 
+
     fun getRadii(): List<Double> = listOf(heightRadius, widthRadius)
 
-    fun getArea(): Double {
+    override fun getArea(): Double {
         return  PI * heightRadius * widthRadius
     }
 }
